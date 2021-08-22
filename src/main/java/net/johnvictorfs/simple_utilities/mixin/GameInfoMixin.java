@@ -25,7 +25,9 @@ public abstract class GameInfoMixin {
     @Inject(method = "<init>(Lnet/minecraft/client/MinecraftClient;)V", at = @At(value = "RETURN"))
     private void onInit(MinecraftClient client, CallbackInfo ci) {
         // Start Mixin
-        System.out.println("Init Coordinates Mixin");
+        if (!this.client.options.debugEnabled) {
+            System.out.println("Init Coordinates Mixin");
+        }
         this.hudInfo = new GameInfoHud(client);
     }
 

@@ -20,20 +20,15 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Environment(EnvType.CLIENT)
 public class GameInfoHud {
@@ -110,6 +105,16 @@ public class GameInfoHud {
         // Capitalize first letter of a String
         if (str == null) return null;
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    private String relativeToBelowSeaLevel(double verticalPosition) {
+        if (verticalPosition < 64D) {
+            return new TranslatableText("text.direction.simple_utilities.sealevel.below").getString();
+        } else if (verticalPosition > 64D) {
+            return new TranslatableText("text.direction.simple_utilities.sealevel.above").getString();
+        } else {
+            return new TranslatableText("text.direction.simple_utilities.sealevel.at").getString();
+        }
     }
 
     private String getOffset(Direction facing) {
@@ -297,6 +302,10 @@ public class GameInfoHud {
                 // Add current parsed time
                 gameInfo.add(parseTime(client.world.getTimeOfDay()));
             }
+        }
+
+        if (config.statusElements.toggleSeaLevelDisplay) {
+            gameInfo.add(relativeToBelowSeaLevel(this.player.getEyeY()));
         }
 
         return gameInfo;
