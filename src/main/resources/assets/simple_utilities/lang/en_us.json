@@ -22,5 +22,6 @@
   "text.autoconfig.simple_utilities.option.statusElements.toggleBiomeStatus": "Biome Info Status",
   "text.autoconfig.simple_utilities.option.statusElements.toggleGameTimeStatus": "In-Game Time Status",
   "text.autoconfig.simple_utilities.option.statusElements.toggleSeaLevelDisplay": "Show Relative To Sea Level",
+  "text.autoconfig.simple_utilities.option.statusElements.toggleWorldDisplay": "Show Current World",
   "text.autoconfig.simple_utilities.option.statusElements.textColor": "Text Color"
 }

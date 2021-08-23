@@ -20,6 +20,7 @@ public class SimpleUtilitiesConfig implements ConfigData {
         public boolean toggleBiomeStatus = true;
         public boolean toggleGameTimeStatus = true;
         public boolean toggleSeaLevelDisplay = true;
+        public boolean toggleWorldDisplay = true;
 
         @ConfigEntry.ColorPicker
         public int textColor = Colors.white;

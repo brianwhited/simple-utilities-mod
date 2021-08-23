@@ -308,6 +308,11 @@ public class GameInfoHud {
             gameInfo.add(relativeToBelowSeaLevel(this.player.getEyeY()));
         }
 
+        if (config.statusElements.toggleWorldDisplay) {
+            var currentWorld = this.player.world;
+            gameInfo.add(currentWorld.getRegistryKey().getValue().toString());
+        }
+
         return gameInfo;
     }
 }
